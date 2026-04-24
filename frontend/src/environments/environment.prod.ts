@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://roller-mpegs-concerning-boards.trycloudflare.com/api',
-  socketUrl: 'https://roller-mpegs-concerning-boards.trycloudflare.com',
+  apiUrl: 'https://eventos-api-3f8l.onrender.com/api',
+  socketUrl: 'https://eventos-api-3f8l.onrender.com',
 };
