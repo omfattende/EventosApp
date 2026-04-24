@@ -1,0 +1,382 @@
+// Variables CSS para temas
+:root {
+  // Colores primarios (Indigo mejorado)
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: #818cf8;
+  --primary-dark: #3730a3;
+
+  // Fondos
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-input: #f8fafc;
+  --bg-overlay: rgba(15, 23, 42, 0.4);
+
+  // Textos
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-muted: #94a3b8;
+
+  // Bordes y divisores
+  --border-color: #e2e8f0;
+  --border-focus: #4f46e5;
+  --divider-color: #e2e8f0;
+
+  // Sombras
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  // Estados
+  --error-color: #ef4444;
+  --success-color: #22c55e;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+
+  // Chat
+  --chat-own-bg: #e0e7ff;
+  --chat-other-bg: #ffffff;
+
+  // Gradientes
+  --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+}
+
+// TEMA OSCURO
+.dark-theme {
+  --primary-color: #818cf8;
+  --primary-hover: #6366f1;
+  --primary-light: #a5b4fc;
+  --primary-dark: #4f46e5;
+
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: #1e293b;
+  --bg-input: #334155;
+  --bg-overlay: rgba(2, 6, 23, 0.6);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+
+  --border-color: #334155;
+  --border-focus: #818cf8;
+  --divider-color: #334155;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+
+  --error-color: #f87171;
+  --success-color: #4ade80;
+  --warning-color: #fbbf24;
+  --info-color: #60a5fa;
+
+  --chat-own-bg: #312e81;
+  --chat-other-bg: #1e293b;
+
+  --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+}
+
+// Reset y base
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Scrollbar personalizada
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+// Material Design Overrides
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-fab.mat-primary,
+.mat-mdc-mini-fab.mat-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.mat-mdc-button.mat-primary {
+  color: var(--primary-color) !important;
+}
+
+// Form Fields - Asegurar colores correctos
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-form-field .mat-mdc-input-element {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-form-field .mat-mdc-floating-label {
+  color: var(--text-secondary) !important;
+}
+
+.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline__leading,
+.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline__notch,
+.mat-mdc-form-field .mdc-text-field--outlined .mdc-notched-outline__trailing {
+  border-color: var(--border-color) !important;
+}
+
+.mat-mdc-form-field.mat-focused .mdc-text-field--outlined .mdc-notched-outline__leading,
+.mat-mdc-form-field.mat-focused .mdc-text-field--outlined .mdc-notched-outline__notch,
+.mat-mdc-form-field.mat-focused .mdc-text-field--outlined .mdc-notched-outline__trailing {
+  border-color: var(--primary-color) !important;
+}
+
+// Select
+.mat-mdc-select-value {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-select-arrow {
+  color: var(--text-secondary) !important;
+}
+
+// Slide Toggle
+.mat-mdc-slide-toggle .mdc-switch__label {
+  color: var(--text-primary) !important;
+}
+
+// Menus
+.mat-mdc-menu-panel {
+  background-color: var(--bg-card) !important;
+}
+
+.mat-mdc-menu-item {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-menu-item .mat-icon {
+  color: var(--text-secondary) !important;
+}
+
+// Cards
+.mat-mdc-card {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-card-title {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-card-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+// Fix card content and actions background
+.mat-mdc-card-content {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-card-actions {
+  background-color: var(--bg-card) !important;
+  border-top: 1px solid var(--divider-color);
+}
+
+.mat-mdc-card-header {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+// Chips
+.mat-mdc-chip {
+  --mdc-chip-container-color: var(--bg-tertiary);
+  --mdc-chip-label-text-color: var(--text-primary);
+}
+
+// Toolbar
+.mat-toolbar {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+// Progress Spinner
+.mat-mdc-progress-spinner circle {
+  stroke: var(--primary-color) !important;
+}
+
+// Snackbar
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: var(--bg-secondary);
+  --mdc-snackbar-supporting-text-color: var(--text-primary);
+}
+
+// Tablas y listas
+.mat-mdc-table {
+  background-color: var(--bg-card) !important;
+}
+
+.mat-mdc-row, .mat-mdc-header-row {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-cell, .mat-mdc-header-cell {
+  color: var(--text-primary) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+
+// Dialogs
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+// Tooltips
+.mat-mdc-tooltip {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+// Stepper y expansion panels
+.mat-mdc-stepper-vertical, .mat-mdc-stepper-horizontal {
+  background-color: var(--bg-card);
+}
+
+.mat-mdc-expansion-panel {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.mat-mdc-expansion-panel-header {
+  color: var(--text-primary);
+}
+
+// Tabs
+.mat-mdc-tab-group {
+  background-color: var(--bg-card);
+}
+
+.mat-mdc-tab .mdc-tab__text-label {
+  color: var(--text-secondary) !important;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: var(--primary-color) !important;
+}
+
+// Paginator
+.mat-mdc-paginator {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+// Datepicker
+.mat-datepicker-content {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.mat-calendar-body-cell-content {
+  color: var(--text-primary);
+}
+
+.mat-calendar-body-selected {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+// Autocomplete / Select Panel
+.mat-mdc-autocomplete-panel,
+.mat-mdc-select-panel {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.mat-mdc-option {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-card) !important;
+}
+
+.mat-mdc-option:hover {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+.mat-mdc-option .mat-icon {
+  color: var(--text-secondary) !important;
+}
+
+// Checkbox y Radio
+.mat-mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate) ~ .mdc-checkbox__background {
+  border-color: var(--border-color);
+}
+
+.mat-mdc-radio-button .mdc-radio__native-control:enabled:not(:checked) + .mdc-radio__background .mdc-radio__outer-circle {
+  border-color: var(--border-color);
+}
+
+// Sliders
+.mat-mdc-slider .mdc-slider__track--active {
+  background-color: var(--primary-color);
+}
+
+// Buttons text color fix
+.mat-mdc-button, .mat-mdc-outlined-button {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-button.mat-primary, .mat-mdc-raised-button.mat-primary {
+  color: white !important;
+}
+
+.mat-mdc-outlined-button {
+  border-color: var(--border-color) !important;
+}
+
+// Fix for placeholder text
+::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+// Selection highlight
+::selection {
+  background-color: var(--primary-light);
+  color: var(--text-primary);
+}
+
+// Fix input datetime-local calendar icon in dark mode
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
+}
+
+.dark-theme input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}

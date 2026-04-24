@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  avatar    String?
+  bio       String?
+  createdAt DateTime @default(now())
+
+  createdEvents     Event[]             @relation("CreatedEvents")
+  eventParticipants EventParticipant[]
+  messages          Message[]
+}
+
+model Category {
+  id    String  @id @default(uuid())
+  name  String  @unique
+  icon  String?
+  events Event[]
+}
+
+model Event {
+  id             String   @id @default(uuid())
+  title          String
+  description    String
+  imageUrl       String?
+  maxParticipants Int
+  isOnline       Boolean  @default(false)
+  locationUrl    String?
+  dateTime       DateTime
+  createdAt      DateTime @default(now())
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  creatorId String
+  creator   User   @relation("CreatedEvents", fields: [creatorId], references: [id])
+
+  participants EventParticipant[]
+  messages     Message[]
+  location     EventLocation?
+}
+
+model EventLocation {
+  id        String @id @default(uuid())
+  eventId   String @unique
+  latitude  Float
+  longitude Float
+  event     Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([latitude, longitude])
+}
+
+model EventParticipant {
+  id        String   @id @default(uuid())
+  eventId   String
+  userId    String
+  joinedAt  DateTime @default(now())
+
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, userId])
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

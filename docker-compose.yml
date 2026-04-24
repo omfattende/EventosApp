@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: eventos_db
+    restart: always
+    environment:
+      POSTGRES_USER: eventos_user
+      POSTGRES_PASSWORD: eventos_pass
+      POSTGRES_DB: eventos_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
